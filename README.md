@@ -53,15 +53,15 @@ The results of RMSE are
 The code mainly follows the sensor fusions and Kalman filter algorithms with the codes in ```../src```
 
 #### Your Kalman Filter algorithm handles the first measurements appropriately.
-The initialization step for the state vectors and covariance matrices are applied in[FusionEKF.cpp](../src/FusionEKF.cpp) from line 58 to 112.
+The initialization step for the state vectors and covariance matrices are applied in [FusionEKF.cpp](../src/FusionEKF.cpp) from line 58 to 112.
 
 #### Your Kalman Filter algorithm first predicts then updates.
 The prections step are at [FusionEKF.cpp](../src/FusionEKF.cpp) from line 114 to 155 and the updates are placed at the same file from line 157 to 192.
 
 #### Your Kalman Filter can handle radar and lidar measurements.
-Different scheme are utilized in the first measurements (from line 73 to 111) and updates steps (from line 157 to 192) in[FusionEKF.cpp](../src/FusionEKF.cpp).  
+Different scheme are utilized in the first measurements (from line 73 to 111) and updates steps (from line 157 to 192) in [FusionEKF.cpp](../src/FusionEKF.cpp).  
 
 ### Code Efficiency
 
 #### Your algorithm should avoid unnecessary calculations.
-I optimized the update steps in both original and extended kalman filter by adding method ```Updatex_andP_``` in[kalman_filter.cpp](../src/kalman_filter.cpp) from line 82 to 94 and[kalman_filter.h](../src/kalman_filter.h) from line 6 to 8.
+I optimized the update steps in both original and extended kalman filter by adding method ```Updatex_andP_``` in [kalman_filter.cpp](../src/kalman_filter.cpp) from line 82 to 94 and [kalman_filter.h](../src/kalman_filter.h) from line 6 to 8.
