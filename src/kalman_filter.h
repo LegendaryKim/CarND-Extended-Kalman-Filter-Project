@@ -3,6 +3,9 @@
 #include "Eigen/Dense"
 
 class KalmanFilter {
+private:
+  // identical calculation in update state in original and extended Kalman filter
+  void Updatex_andP_(const Eigen::VectorXd &y);
 public:
 
   // state vector
