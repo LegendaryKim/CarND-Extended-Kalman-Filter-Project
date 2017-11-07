@@ -49,6 +49,8 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
     * Calculate a Jacobian here.
   */
     MatrixXd Hj(3,4);
+    Hj.fill(0.0); // return Hj as zero matrix when c1 is too small
+
     //recover state parameters
     double px = x_state(0);
     double py = x_state(1);
@@ -65,7 +67,6 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
         std::cout << "CalculateJacobian() - Error - Division by Zero" << std::endl;
         return Hj;
     }
-
     //compute the Jacobian matrix
     Hj << px/c2, py/c2, 0, 0,
           -py/c1, px/c1, 0, 0,
