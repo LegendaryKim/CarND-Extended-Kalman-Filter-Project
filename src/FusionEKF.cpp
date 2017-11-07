@@ -132,9 +132,10 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
                0, 0, 1, 0,
                0, 0, 0, 1;
 
-    // Noise covariance matrix
-    double noise_ax = 9.0;
-    double noise_ay = 9.0;
+  // movedZ to header
+    // Noise covariance matrix:
+//    double noise_ax = 9.0;
+//    double noise_ay = 9.0;
 
     double dt_2 = dt * dt;
     double dt_3 = dt_2 * dt;
