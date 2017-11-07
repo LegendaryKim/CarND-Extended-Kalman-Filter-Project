@@ -55,8 +55,20 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   double vy = x_(3);
 
   double rho = sqrt(px*px + py*py);
-  double phi = atan2(py,px);
-  double rho_d = (px*vx + py*vy)/rho;
+  //defensive logic to prevent "undefined" atan2(0,0)
+  double phi;
+  if (fabs(px) < 1e-10 && fabs(py) < 1e-10) {
+    phi = 0.0;
+  } else {
+    phi = atan2(py,px);
+  }
+  //defensive logic to avoid dividing by 0
+  double rho_d;
+  if (fabs(px) < 1e-10 && fabs(py) < 1e-10) {
+    rho_d = 0.0;
+  } else {
+    rho_d = (px*vx + py*vy)/rho;
+  }
 
 
   VectorXd z_pred(3);
@@ -81,9 +93,10 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 
 void KalmanFilter::Updatex_andP_(const VectorXd &y) {
   MatrixXd Ht = H_.transpose();
-  MatrixXd S = H_ * P_ * Ht + R_;
-  MatrixXd Si = S.inverse();
+  // moving this variable instead of repeating the calculation
   MatrixXd PHt = P_ * Ht;
+  MatrixXd S = H_ * PHt + R_;
+  MatrixXd Si = S.inverse();
   MatrixXd K = PHt * Si;
 
   //new estimate
