@@ -32,6 +32,8 @@ Tips for detail prerequisite can be found [here](./README_Original.md)
 ![alt text][image1]
 ![alt text][image2]
 
+Here is the [output video](./output/SensorFusion_ExtendedKalmanFilter.mov)
+
 ## Rubrics
 
 ### Compiling
